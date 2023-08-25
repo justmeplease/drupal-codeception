@@ -5,7 +5,6 @@ namespace Codeception\Module;
 use Codeception\Module;
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Url;
-use Codeception\TestCase;
 
 /**
  * Class DrupalEntity.
@@ -60,7 +59,7 @@ class DrupalEntity extends Module {
   /**
    * {@inheritdoc}
    */
-  public function _after(TestCase $test) { // @codingStandardsIgnoreLine
+  public function _after(\Codeception\TestInterface $test) { // @codingStandardsIgnoreLine
     if ($this->config['cleanup_test']) {
       $this->doEntityCleanup();
     }
@@ -69,7 +68,7 @@ class DrupalEntity extends Module {
   /**
    * {@inheritdoc}
    */
-  public function _failed(TestCase $test, $fail) { // @codingStandardsIgnoreLine
+  public function _failed(\Codeception\TestInterface $test, $fail) { // @codingStandardsIgnoreLine
     if ($this->config['cleanup_failed']) {
       $this->doEntityCleanup();
     }
