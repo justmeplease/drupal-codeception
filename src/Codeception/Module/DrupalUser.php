@@ -51,7 +51,7 @@ class DrupalUser extends Module {
    *
    * @var array
    */
-  protected $config = [
+  protected array $config = [
     'alias' => '',
     'default_role' => 'authenticated',
     'driver' => 'WebDriver',
@@ -77,7 +77,7 @@ class DrupalUser extends Module {
   /**
    * {@inheritdoc}
    */
-  public function _after(\Codeception\TestCase $test) { // @codingStandardsIgnoreLine
+  public function _after(\Codeception\TestInterface $test) { // @codingStandardsIgnoreLine
     if ($this->_getConfig('cleanup_test')) {
       $this->userCleanup();
     }
@@ -86,7 +86,7 @@ class DrupalUser extends Module {
   /**
    * {@inheritdoc}
    */
-  public function _failed(\Codeception\TestCase $test, $fail) { // @codingStandardsIgnoreLine
+  public function _failed(\Codeception\TestInterface $test, $fail) { // @codingStandardsIgnoreLine
     if ($this->_getConfig('cleanup_failed')) {
       $this->userCleanup();
     }
@@ -143,7 +143,7 @@ class DrupalUser extends Module {
    */
   public function logInAs($username) {
     $alias = $this->_getConfig('alias') ? $this->_getConfig('alias') . ' ' : '';
-    $output = Drush::runDrush($alias. 'uli --name=' . $username, $this->_getConfig('drush'), $this->_getConfig('working_directory'));
+    $output = Drush::runDrush($alias . 'uli --name=' . $username, $this->_getConfig('drush'), $this->_getConfig('working_directory'));
     $gen_url = str_replace(PHP_EOL, '', $output);
     $url = substr($gen_url, strpos($gen_url, '/user/reset'));
     $this->driver->amOnPage($url);

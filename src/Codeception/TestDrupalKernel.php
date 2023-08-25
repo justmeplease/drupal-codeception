@@ -4,16 +4,16 @@ namespace Codeception;
 
 use Drupal\Core\DrupalKernel;
 use Drupal\Core\Site\Settings;
-use Symfony\Cmf\Component\Routing\RouteObjectInterface;
+use Drupal\Core\Routing\RouteObjectInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Route;
 
-class TestDrupalKernel extends DrupalKernel{
+class TestDrupalKernel extends DrupalKernel {
 
   /**
    * TestDrupalKernel constructor.
    */
-  public function __construct($env, $class_loader, $root){
+  public function __construct($env, $class_loader, $root) {
     $this->root = $root;
     parent::__construct($env, $class_loader);
   }
@@ -21,14 +21,14 @@ class TestDrupalKernel extends DrupalKernel{
   /**
    * Boots test environment.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   The current request.
    * @param string $sitePath
    *   The current site path.
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The current request.
    *
    * @throws \Exception
    */
-  public function bootTestEnvironment($sitePath, Request $request){
+  public function bootTestEnvironment($sitePath, Request $request) {
     static::bootEnvironment();
     $this->setSitePath($sitePath);
     $this->loadLegacyIncludes();

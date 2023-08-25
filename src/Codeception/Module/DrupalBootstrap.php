@@ -30,23 +30,15 @@ class DrupalBootstrap extends Module {
    *
    * @var array
    */
-  protected $config = [
+  protected array $config = [
     'site_path' => 'sites/default',
   ];
 
   /**
-   * DrupalBootstrap constructor.
-   *
-   * @param \Codeception\Lib\ModuleContainer $container
-   *   Module container.
-   * @param null|array $config
-   *   Array of configurations or null.
-   *
-   * @throws \Codeception\Exception\ModuleConfigException
-   * @throws \Codeception\Exception\ModuleException
+   * @return void
    */
-  public function __construct(ModuleContainer $container, $config = NULL) {
-    parent::__construct($container, $config);
+  public function _initialize() : void {
+
     if (!isset($this->config['root'])) {
 
       $drupalFinder = new DrupalFinder();

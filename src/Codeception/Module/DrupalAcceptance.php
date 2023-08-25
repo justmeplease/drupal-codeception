@@ -29,18 +29,10 @@ class DrupalAcceptance extends Module {
   protected $webdriver;
 
   /**
-   * DrupalAcceptance constructor.
-   *
-   * @param \Codeception\Lib\ModuleContainer $moduleContainer
-   *   Module container.
-   * @param null|mixed $config
-   *   Configurations.
-   *
-   * @throws \Codeception\Exception\ModuleException
+   * @return void
    */
-  public function __construct(ModuleContainer $moduleContainer, $config = NULL) {
-    parent::__construct($moduleContainer, $config);
-    $this->webdriver = $this->getModule("WebDriver");
+  public function __initialize() : void {
+    $this->webdriver = $this->getModule('WebDriver');
   }
 
   /**
