@@ -13,7 +13,7 @@ Includes:
 
 Require package:
 
-```composer require guncha25/drupal-codeception --dev```
+```composer require justmeplease/drupal-codeception --dev```
 
 If codeception was not previously set up:
 
